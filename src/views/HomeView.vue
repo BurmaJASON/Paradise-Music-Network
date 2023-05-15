@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    <h1 class="text-3xl font-bold underline">Hello testing</h1>
+  <div >
+    <HeroSection></HeroSection>
   </div>
 </template>
 
-<script>
-
+<script setup>
+  import HeroSection from "@/components/partials/HeroSection.vue";
 </script>
