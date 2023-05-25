@@ -14,29 +14,15 @@
                     </span>
                 </div>   
                 <div class="w-1/2 mt-2">
-                    <router-link 
-                        class="
-                            float-right
-                            bg-green-500
-                            text-white
-                            font-semibold
-                            hover:text-white
-                            py-2
-                            px-4
-                            border
-                            hover:border-green-500
-                            rounded
-                            hover:bg-transparent
-                            border-transparent
-                        " 
-                        to=""
-                    >
-                        Edit Profile
-                    </router-link>
+                    <RouterLinkButton
+                        btnText="Edit Profile"
+                        color="transparent"
+                        url="/account/edit-profile"
+                    />
                 </div>   
             </div>
-            <ProfileInfoSection></ProfileInfoSection>
-            <ProfileAboutSection></ProfileAboutSection>
+            <ProfileInfoSection/>
+            <ProfileAboutSection/>
         </div>
     </div>
 </template>
@@ -44,6 +30,7 @@
 <script setup>
 import ProfileInfoSection from '../../components/partials/profile/ProfileInfoSection'
 import ProfileAboutSection from '@/components/partials/profile/ProfileAboutSection.vue'
+import RouterLinkButton from '@/components/global/RouterLinkButton.vue';
 
 </script>
 
