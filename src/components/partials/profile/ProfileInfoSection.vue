@@ -7,9 +7,9 @@
         mt-4
         rounded
         border
-        border-green-500
+        border-transparent
         text-center
-        bg-transparent
+        bg-green-500
         p-2
         py-1
     ">

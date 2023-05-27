@@ -3,25 +3,26 @@
     <router-link 
         class="
             float-right
-            bg-green-500
+            bg-transparent
             text-white
             font-semibold
             hover:text-white
             py-2
             px-4
             border
-            hover:border-green-500
+            hover:border-transparent
             rounded
-            hover:bg-transparent
-            border-transparent
+           
         " 
-        :class="[color ? 'hover:bg-' + color + 'border-' + color : '' ]"
+        :class="[ color ? 'hover:bg-' + color + '-500 border-' + color + '-500' : '' ]"
         :to="url"
     >
         {{ btnText }}
     </router-link>
                   
 </template>
+<!-- hover:bg-transparent
+border-transparent -->
 
 <script setup>
     import {defineProps, toRefs } from 'vue'

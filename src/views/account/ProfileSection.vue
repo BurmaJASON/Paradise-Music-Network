@@ -16,7 +16,7 @@
                 <div class="w-1/2 mt-2">
                     <RouterLinkButton
                         btnText="Edit Profile"
-                        color="transparent"
+                        color="green"
                         url="/account/edit-profile"
                     />
                 </div>   
@@ -25,12 +25,14 @@
             <ProfileAboutSection/>
         </div>
     </div>
+    <SongsSection/>
 </template>
 
 <script setup>
 import ProfileInfoSection from '../../components/partials/profile/ProfileInfoSection'
 import ProfileAboutSection from '@/components/partials/profile/ProfileAboutSection.vue'
 import RouterLinkButton from '@/components/global/RouterLinkButton.vue';
+import SongsSection from '@/components/partials/profile/SongsSection.vue'
 
 </script>
 
