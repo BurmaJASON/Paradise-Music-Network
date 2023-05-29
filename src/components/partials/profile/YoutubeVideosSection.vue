@@ -19,7 +19,11 @@
             </div>
         </div>
 
-        <div class="pb-4">
+        <div class="flex flex-wrap mb-4">
+            <div class="my-1 px-1 w-full md:w-1/2 lg:w-1/2">
+                <div class="text-xl text-gray-300">Video Title</div>
+                <iframe  src="https://www.youtube.com/embed/C3DlM19x4RQ"></iframe>
+            </div>
             
         </div>
     </div>
