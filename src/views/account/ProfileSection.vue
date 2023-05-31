@@ -41,6 +41,7 @@ import PostsSection from '@/components/partials/profile/PostsSection.vue'
 
 
 
+
 </script>
 
 <style>

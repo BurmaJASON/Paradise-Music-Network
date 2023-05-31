@@ -3,8 +3,13 @@
         <router-view/>
     </div>
 </template>
-  
-<style lang="scss">
-  
+
+<style>
+    #AccountView {
+        min-height: 70vh;
+    }
 </style>
+
+<script setup>
+</script>
   
