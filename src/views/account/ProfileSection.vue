@@ -1,5 +1,5 @@
 <template>
-    <div class="container max-w-4xl mx-auto flex">
+    <div class="container max-w-4xl mx-auto flex mt-10">
         <div class="w-1/3">
             <img src="https://via.placeholder.com/500" class="w-full rounded-lg h-auto shadow-lg" alt="Profile Pic">
         </div>
