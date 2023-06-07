@@ -2,7 +2,15 @@
     <div id="EditProfile" class="container max-w-4xl mx-auto py-20 px-6">
         <div class="text-gray-300 text-xl">Edit Profile</div>
         <div class="bg-green-500 w-full h-1"></div>
-        <CropperModal />
+        <CropperModal
+            v-if="showModal"
+            :minAspectRatioProp="{width: 8,height: 8}" 
+            :maxAspectRatioProp="{width: 8,height: 8}" 
+            @croppedImageData = "setCroppedImageData"
+            @showModal="showModal = false"
+        />
+
+        {{ image }}
 
         <div class="flex flex-wrap mt-4 mb-6">
             <div class="w-full md:w-1/2 px-3">
@@ -40,6 +48,15 @@
                 <DisplayCropperButton
                     label="Profile Image"
                     btnText="Update Profile Image"
+                    @showModal="showModal = true"
+                />
+            </div>
+        </div>
+        <div class="flex flex-wrap mt-4 mb-6">
+            <div class="w-full md:w-1/2 px-3">
+                <CroppedImage
+                    label="Cropped Image"
+                    :image="image"
                 />
             </div>
         </div>
@@ -71,12 +88,22 @@
     import DisplayCropperButton from '@/components/global/DisplayCropperButton.vue';
     import SubmitEvent from '../../components/global/SubmitFormButton.vue'
     import CropperModal from '@/components/global/CropperModal.vue';
+    import CroppedImage from '@/components/global/CroppedImage.vue';
 
 
+    let showModal = ref(false);
     let firstName = ref(null);
     let lastName = ref(null);
     let location = ref(null);
     let description = ref(null);
+    // let imageData = ref(null);
+    let image = ref(null);
+
+
+    const setCroppedImageData = (data) => {
+        // imageData = data;
+        image.value = data.imageUrl;
+    }
 
 
     
