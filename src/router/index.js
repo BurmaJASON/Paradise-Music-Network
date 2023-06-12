@@ -9,6 +9,11 @@ import AddSong from '../views/account/AddSong.vue'
 import DeleteSong from '../views/account/DeleteSong.vue'
 import AddYoutubeVideo from '../views/account/AddYoutubeVideo.vue'
 import DeleteYoutubeVideo from '../views/account/DeleteYoutubeVideo.vue'
+import CreatePost from '../views/account/CreatePost.vue'
+import EditPost from '../views/account/EditPost.vue'
+
+
+
 
 
 
@@ -64,6 +69,16 @@ const routes = [
         path : 'delete-youtube-video',
         name : 'DeleteYoutubeVideo',
         component : DeleteYoutubeVideo 
+      },
+      {
+        path : 'create-post',
+        name : 'CreatePost',
+        component : CreatePost 
+      },
+      {
+        path : 'edit-post',
+        name : 'EditPost',
+        component : EditPost 
       },
     ]
   },

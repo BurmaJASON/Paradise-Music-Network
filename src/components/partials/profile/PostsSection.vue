@@ -8,7 +8,7 @@
                     <RouterLinkButton
                         btnText="Create Post"
                         color="green"
-                        url="/account/create"
+                        url="/account/create-post"
                     />
                 </div>
             </div>
