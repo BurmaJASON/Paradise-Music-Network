@@ -7,6 +7,10 @@ import ProfileSection from '../views/account/ProfileSection.vue'
 import EditProfile from '../views/account/EditProfile.vue'
 import AddSong from '../views/account/AddSong.vue'
 import DeleteSong from '../views/account/DeleteSong.vue'
+import AddYoutubeVideo from '../views/account/AddYoutubeVideo.vue'
+import DeleteYoutubeVideo from '../views/account/DeleteYoutubeVideo.vue'
+
+
 
 
 
@@ -50,6 +54,16 @@ const routes = [
         path : 'delete-song',
         name : 'DeleteSong',
         component : DeleteSong 
+      },
+      {
+        path : 'add-youtube-video',
+        name : 'AddYoutubeVideo',
+        component : AddYoutubeVideo 
+      },
+      {
+        path : 'delete-youtube-video',
+        name : 'DeleteYoutubeVideo',
+        component : DeleteYoutubeVideo 
       },
     ]
   },
