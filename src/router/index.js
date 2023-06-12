@@ -11,6 +11,10 @@ import AddYoutubeVideo from '../views/account/AddYoutubeVideo.vue'
 import DeleteYoutubeVideo from '../views/account/DeleteYoutubeVideo.vue'
 import CreatePost from '../views/account/CreatePost.vue'
 import EditPost from '../views/account/EditPost.vue'
+import Posts from '../views/account/PostsView.vue'
+import PostById from '../views/account/PostById.vue'
+
+
 
 
 
@@ -79,6 +83,16 @@ const routes = [
         path : 'edit-post',
         name : 'EditPost',
         component : EditPost 
+      },
+      {
+        path : 'posts',
+        name : 'Posts',
+        component : Posts 
+      },
+      {
+        path : 'post-by-id',
+        name : 'PostById',
+        component : PostById 
       },
     ]
   },

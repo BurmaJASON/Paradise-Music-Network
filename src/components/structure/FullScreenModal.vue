@@ -37,14 +37,23 @@
             <div class="my-auto fixed border-white w-80 pt-16">
                 <p class="text-2xl text-center text-white font-bold">Menu</p>
                     <RouterLinkButton
+                        @click="open = !open"
                         class="w-full text-gray-100 text-center text-lg"
                         btnText="Profile"
                         color="green"
                         url="/account/profile"
                     />
+
+                    <RouterLinkButton
+                        @click="open = !open"
+                        class="w-full text-gray-100 text-center text-lg mt-4"
+                        btnText="Posts"
+                        color="green"
+                        url="/account/posts"
+                    />
                 
                     <RouterLinkButton
-                    @click="open = !open"
+                        @click="open = !open"
                         class="w-full text-gray-100 text-center text-lg mt-4"
                         btnText="Close"
                         color="red"
