@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\LogoutRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 
 class AuthController extends Controller
 {
 
     // Register
-    public function register(Request $request) {
+    public function register(RegisterRequest $request) {
 
         try{
 
@@ -38,7 +40,7 @@ class AuthController extends Controller
     }
 
     // Login
-    public function login(Request $request) {
+    public function login(LoginRequest $request) {
 
         try{
 
@@ -67,7 +69,7 @@ class AuthController extends Controller
 
     // Logout
 
-    public function logout(Request $request) {
+    public function logout(LogoutRequest $request) {
 
         try{
 
