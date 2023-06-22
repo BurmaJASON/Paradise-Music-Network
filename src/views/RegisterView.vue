@@ -11,7 +11,7 @@
                         placeholder = "John"
                         v-model:input="firstName"
                         inputType="text"
-                        error="This is a text error"
+                        :error="errors.first_name ? errors.first_name[0] : ''"
                    />
                 </div>
 
@@ -22,7 +22,7 @@
                         placeholder = "Doe"
                         v-model:input="lastName"
                         inputType="text"
-                        error="This is a text error"
+                        :error="errors.last_name ? errors.last_name[0] : ''"
                    />
                 </div>
 
@@ -33,7 +33,7 @@
                         placeholder = "johnjoe@email.com"
                         v-model:input="email"
                         inputType="text"
-                        error="This is a text error"
+                        :error="errors.email ? errors.email[0] : ''"
                    />
                 </div>
 
@@ -44,7 +44,7 @@
                         placeholder = "password123?"
                         v-model:input="password"
                         inputType="password"
-                        error="This is a text error"
+                        :error="errors.password ? errors.password[0] : ''"
                    />
                 </div>
 
@@ -70,6 +70,7 @@
                         tracking-wide
                     "
                     type="submit"
+                    @click="register"
                 >
                 Register
                 </button>
@@ -86,14 +87,38 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { useUserStore } from "@/store/user-store";
+     import axios from "axios";
+     import { ref } from "vue";
     import TextInput from "../components/global/TextInput.vue"
 
+    let userStore = useUserStore();
+
+    let errors = ref([])
     let firstName = ref(null)
     let lastName = ref(null)
     let email = ref(null)
     let password = ref(null)
     let confirmPassword = ref(null)
+
+    const register = async () => {
+     errors.value = []
+
+     try{
+          let res = await axios.post('http://127.0.0.1:8000/api/register', {
+               first_name : firstName.value,
+               last_name : lastName.value,
+               email : email.value,
+               password : password.value,
+               password_confirmation : confirmPassword.value 
+          })
+
+          userStore.setUserDetails(res);
+
+     }catch(err) {
+          errors.value = err.response.data.errors
+     }
+    }
 
 </script>
 
