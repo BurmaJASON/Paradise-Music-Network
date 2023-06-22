@@ -59,6 +59,9 @@
     import { ref } from "vue";
     import TextInput from "../components/global/TextInput.vue"
     import axios from "axios";
+    import { useUserStore } from '../store/user-store';
+
+    const userStore = useUserStore();
 
     let errors = ref([])
     let email = ref(null)
@@ -72,6 +75,9 @@
                 password: password.value
             })
             console.log(res);
+
+            userStore.setUserDetails(res)
+
         }catch(err) {
             errors.value = err.response.data.errors
         }
