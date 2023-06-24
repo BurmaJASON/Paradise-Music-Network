@@ -19,11 +19,9 @@ class UserController extends Controller
             return response()->json(['user' => $user],200);
         }catch(\Exception $e){
             return response()->json([
-                'error' => 'Something went wrong in
-                UserController.show',
-                'error' => $e->getMessage(),
-
-            ]);
+                'message' => 'Something went wrong in UserController.show',
+                'error' => $e->getMessage()
+            ], 400);
         }
     }
 
@@ -37,18 +35,16 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
-            // $user->email = $request->email;
-            // $user->description = $request->description;
+            $user->location = $request->location;
+            $user->description = $request->description;
 
             $user->save();
             return response()->json('User details updated',200);
         }catch(\Exception $e){
             return response()->json([
-                'error' => 'Something went wrong in
-                UserController.update',
-                'error' => $e->getMessage(),
-
-            ]);
+                'message' => 'Something went wrong in UserController.update',
+                'error' => $e->getMessage()
+            ], 400);
         }
     }
 }
