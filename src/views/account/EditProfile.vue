@@ -19,7 +19,8 @@
                     placeholder = "John"
                     v-model:input="firstName"
                     inputType="text"
-                    error="This is a text error"
+                    :error="errors.first_name ? errors.first_name[0] : ''"
+
                 />
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -28,7 +29,8 @@
                     placeholder = "Doe"
                     v-model:input="lastName"
                     inputType="text"
-                    error="This is a text error"
+                    :error="errors.last_name ? errors.last_name[0] : ''"
+
                 />
             </div>
         </div>
@@ -39,7 +41,6 @@
                     placeholder = "Madrid"
                     v-model:input="location"
                     inputType="text"
-                    error="This is a text error"
                 />
             </div>
         </div>
@@ -65,8 +66,7 @@
                 <TextAreaView
                     label="Description"
                     placeholder="Please enter some information here!!!"
-                    v-model="description"
-                    error="This is a test error"
+                    v-model:description="description"
                 />
             </div>
         </div>
@@ -74,6 +74,7 @@
             <div class="w-full  px-3">
                 <SubmitEvent
                     btnText="Update Profile"
+                    @click="updateUser"
                 />
             </div>
         </div>
@@ -82,14 +83,19 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { onMounted, ref } from 'vue'
+    import { useUserStore } from '@/store/user-store';
     import TextInput from '../../components/global/TextInput.vue'
     import TextAreaView from  '../../components/global/TextAreaView.vue'
     import DisplayCropperButton from '@/components/global/DisplayCropperButton.vue';
     import SubmitEvent from '../../components/global/SubmitFormButton.vue'
     import CropperModal from '@/components/global/CropperModal.vue';
     import CroppedImage from '@/components/global/CroppedImage.vue';
+    import axios from 'axios';
+    import { useRouter } from 'vue-router';
 
+    const router = useRouter();
+    const userStore = useUserStore();
 
     let showModal = ref(false);
     let firstName = ref(null);
@@ -98,11 +104,43 @@
     let description = ref(null);
     // let imageData = ref(null);
     let image = ref(null);
+    let errors  = ref([]);
+
+
+    onMounted(() => {
+        firstName.value = userStore.firstName || null
+        lastName.value = userStore.lastName || null
+        location.value = userStore.location || null
+        description.value = userStore.description || null
+        image.value = userStore.image || null
+    })
 
 
     const setCroppedImageData = (data) => {
         // imageData = data;
         image.value = data.imageUrl;
+    }
+
+    const updateUser = async() => {
+        errors.value = [];
+
+        let data = new FormData();
+        data.append('first_name', firstName.value || '')
+        data.append('last_name', lastName.value || '')
+        data.append('location', location.value || '')
+        data.append('description',description.value || '')
+
+        try {
+            await axios.post('users/' + userStore.id + '?_method=PUT', data);
+            await userStore.fetchUser();
+            router.push('/account/profile');
+        } catch (err) {
+            if (err.response && err.response.data && err.response.data.errors) {
+                errors.value = err.response.data.errors;
+            } else {
+                console.log(err); // Handle other types of errors or log the error for further investigation
+            }
+        }
     }
 
 
