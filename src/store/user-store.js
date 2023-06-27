@@ -35,6 +35,7 @@ export const useUserStore = defineStore('user', {
         this.$state.lastName = res.data.user.last_name;
         this.$state.location = res.data.user.location;
         this.$state.description = res.data.user.description;
+        this.$state.image = res.data.user.image;
     },
 
     clearUser() {
