@@ -57,10 +57,9 @@
             <div class="w-full md:w-1/2 px-3">
                 <CroppedImage
                     label="Cropped Image"
-                    :image="'http://127.0.0.1:8000/images/users/' + image"
+                    :image="image"
                 />
             </div>
-
         </div>
         <div class="flex flex-wrap mt-4 mb-6">
             <div class="w-full  px-3">
@@ -140,15 +139,11 @@
         }
 
         try {
-            await axios.post('users/' + userStore.id + '?_method=PUT', data);
+            await axios.post('api/users/' + userStore.id + '?_method=PUT', data);
             await userStore.fetchUser();
             router.push('/account/profile');
         } catch (err) {
-            if (err.response && err.response.data && err.response.data.errors) {
-                errors.value = err.response.data.errors;
-            } else {
-                console.log(err); // Handle other types of errors or log the error for further investigation
-            }
+            errors.value = err.response.data.error;
         }
     }
 
