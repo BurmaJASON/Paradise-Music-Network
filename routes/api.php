@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\SongController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('users/{id}',[UserController::class,'show']);
     Route::put('users/{id}',[UserController::class,'update']);
+
+    Route::post('songs',[SongController::class,'store']);
+    Route::delete('songs/{id}/{user_id}',[SongController::class,'destroy']);
+
 
 
     Route::get('inside-mware',function() {
