@@ -71,9 +71,11 @@
     import Swal from '../../sweetalert2';
 
     import { useUserStore } from '@/store/user-store';
-import axios from 'axios';
+    import axios from 'axios';
+    import { useSongStore } from '../../store/song-store'
 
     const userStore = useUserStore();
+    const songStore = useSongStore();
 
     let title = ref(null);
     let song = ref(null);
@@ -104,6 +106,8 @@ import axios from 'axios';
             form.append('file', song.value)
 
             await axios.post('api/songs',form);
+
+            songStore.fetchSongsByUserId(userStore.id);
 
         }catch(err) {
             errors.value = err.response.data.errors;
