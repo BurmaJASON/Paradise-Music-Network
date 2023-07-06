@@ -73,9 +73,11 @@
     import { useUserStore } from '@/store/user-store';
     import axios from 'axios';
     import { useSongStore } from '../../store/song-store'
+    import { useRouter } from 'vue-router';
 
     const userStore = useUserStore();
     const songStore = useSongStore();
+    const router = useRouter();
 
     let title = ref(null);
     let song = ref(null);
@@ -108,6 +110,10 @@
             await axios.post('api/songs',form);
 
             songStore.fetchSongsByUserId(userStore.id);
+
+            setTimeout(() => {
+                router.push('/account/profile');
+            },200)
 
         }catch(err) {
             errors.value = err.response.data.errors;
