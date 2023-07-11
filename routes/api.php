@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\SongController;
 use App\Http\Controllers\API\SongsByUserController;
 use App\Http\Controllers\API\UserController;
@@ -39,6 +40,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('youtube',[YoutubeController::class,'store']);
     Route::delete('youtube/{id}',[YoutubeController::class,
     'destroy']);
+
+    Route::get('posts',[PostController::class,'index']);
+    Route::get('posts/{$id}',[PostController::class,'show']);
+    Route::post('posts',[PostController::class,'store']);
+    Route::get('posts/{$id}',[PostController::class,'update']);
+    Route::get('posts/{$id}',[PostController::class,'destroy']);
+
+
+
+
+
+
 
 
     Route::get('inside-mware',function() {
