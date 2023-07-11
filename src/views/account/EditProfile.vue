@@ -10,7 +10,6 @@
             @showModal="showModal = false"
         />
 
-        {{ image }}
 
         <div class="flex flex-wrap mt-4 mb-6">
             <div class="w-full md:w-1/2 px-3">

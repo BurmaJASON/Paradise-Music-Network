@@ -96,7 +96,7 @@
             Swal.fire(
                 'Opps, something went wrong!',
                 'You forgot to upload the mp3 file!',
-                'success'
+                'warning'
             )
             return null;
         }
