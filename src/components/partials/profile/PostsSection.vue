@@ -4,7 +4,7 @@
             <div class="flex flex-wrap font-bold text-gray-700">
                 <div class="text-gray-300 text-xl">Posts</div>
                 <div class="bg-green-500 w-full h-1"></div>
-                <div class="w-full mt-4">
+                <div class="w-full mt-4" v-if="userStore.id == route.params.id">
                     <RouterLinkButton
                         btnText="Create Post"
                         color="green"
@@ -38,7 +38,7 @@
                         <p class="text-gray-300 text-md">
                             {{ post.description }}
                         </p>
-                        <div class="mt-2 flex items-center justify-end">
+                        <div class="mt-2 flex items-center justify-end" v-if="userStore.id == route.params.id">
                             <router-link
                                 :to="'/account/edit-post/' + post.id" 
                                 class="
@@ -82,12 +82,12 @@
     import RouterLinkButton from '../../global/RouterLinkButton.vue'
     import { usePostStore } from '../../../store/post-store'
     import { useUserStore } from '../../../store/user-store'
-    // import { useRoute } from 'vue-router'
+    import { useRoute } from 'vue-router'
     import Swal from '../../../sweetalert2'
     import axios from 'axios'
     import { onMounted } from 'vue'
 
-    // const route = useRoute()
+    const route = useRoute()
     const postStore = usePostStore()
     const userStore = useUserStore()
 

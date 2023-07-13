@@ -45,7 +45,7 @@ const routes = [
     component: AccountView,
     children : [
       {
-          path : 'profile',
+          path : 'profile/:id',
           name : 'ProfileSection',
           component : ProfileSection 
       },

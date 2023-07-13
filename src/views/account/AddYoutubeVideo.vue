@@ -60,7 +60,7 @@ import Swal from 'sweetalert2';
             'Your added a video with the name "' + title.value + '"' ,
             'success'
         )
-        router.push('/account/profile');
+        router.push('/account/profile/' + userStore.id);
 
       }catch (err) {
         errors.value = err.response.data.errors;

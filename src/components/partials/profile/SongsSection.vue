@@ -4,7 +4,7 @@
             <div class="flex flex-wrap font-bold text-gray-700">
                 <div class="text-gray-300 text-xl">Songs</div>
                 <div class="bg-green-500 w-full h-1"></div>
-                <div class="w-full mt-4">
+                <div class="w-full mt-4" v-if="userStore.id == route.params.id">
                     <RouterLinkButton class="ml-2"
                         btnText="Delete Song"
                         color="red"
@@ -28,8 +28,10 @@
 <script setup>
     import SongPlayer from './SongPlayer.vue';
     import RouterLinkButton from '@/components/global/RouterLinkButton.vue';
+    import { useUserStore } from '@/store/user-store';
+    import { useRoute } from 'vue-router';
+
+    const route =  useRoute();
+    const userStore = useUserStore();
+    
 </script>
-
-<style>
-
-</style>
