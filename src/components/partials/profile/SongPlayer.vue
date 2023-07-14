@@ -15,7 +15,9 @@
     let songsList = [];
 
     onMounted(() => {
-        mapSongs();
+        setTimeout(() => {
+            mapSongs();
+        }, 500);
     })
 
     const mapSongs = () => {

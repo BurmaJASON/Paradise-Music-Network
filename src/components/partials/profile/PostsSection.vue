@@ -17,7 +17,7 @@
         <div class="flex flex-wrap mb-4">
             <div v-for="post in postStore.posts" :key="post" class="my-1 px-1 w-full md:w-1/2 lg:w-1/2">
                 
-                <div class="max-w-sm border  border-gray-900 rounded-lg">
+                <div class="max-w-sm border  border-gray-700 rounded-lg my-2">
                     <a href="#">
                         <img class="rounded-t-lg" :src="postStore.postImage(post.image)" alt="" />
                     </a>
@@ -92,7 +92,7 @@
     const userStore = useUserStore()
 
     onMounted(async () => {
-        await postStore.fetchPostsByUserId(userStore.id)
+        await postStore.fetchPostsByUserId(route.params.id)
     })
 
     const deletePost = async (title, id) => {

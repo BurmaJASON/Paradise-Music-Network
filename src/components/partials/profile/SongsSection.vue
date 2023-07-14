@@ -30,8 +30,15 @@
     import RouterLinkButton from '@/components/global/RouterLinkButton.vue';
     import { useUserStore } from '@/store/user-store';
     import { useRoute } from 'vue-router';
+    import { onMounted } from 'vue';
+    import { useSongStore } from '@/store/song-store';
 
     const route =  useRoute();
     const userStore = useUserStore();
-    
+    const songStore = useSongStore();
+
+    onMounted(async () => {
+        await songStore.fetchSongsByUserId(route.params.id)
+    })
+     
 </script>
