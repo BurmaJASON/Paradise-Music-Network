@@ -15,15 +15,17 @@
             pt-8
         "
         >
-            <div class="mb-4">
-                <div class="mb-4">
-                    Quick Links
+            <div>
+                <div class="mb-2 text-lg underline">
+                    <b>Quick Links</b>
                 </div>
                 <router-link  to="/" class="block mb-2">Home</router-link>
+                <router-link  to="/login" class="block mb-2">Login</router-link>
+                <router-link  to="/register" class="block mb-2">Register</router-link>
             </div>
-            <div class="mb-4">
+            <div class="mb-2 text-lg underline">
                 <div class="mb-4">
-                    About Our Community
+                    Our Community
                 </div>
                 <p class="mb-4 leading-normal">
                     123 Main Street <br>
@@ -45,13 +47,15 @@
             items-center
             text-sm
             py-6
+            pl-6
+            pr-4
         "
         >
-            &copy;2023 PMN Community, All rights reserved.
-            <div class="pt-4 md:p-0 text-center md:text-right text-xs">
-                <div class="no-underline hover:underline ">Privacy Policy</div>
-                <div class="no-underline hover:underline mt-1">Terms & Conditions</div>
-                <div class="no-underline hover:underline mt-1">Contact Us</div>
+            <div class="mt-4">&copy;2023 PMN Community, All rights reserved.</div>
+            <div class="pt-4 md:p-0 text-left  text-xs">
+                <div class="no-underline hover:underline ml-4">Privacy Policy</div>
+                <div class="no-underline hover:underline ml-4">Terms & Conditions</div>
+                <div class="no-underline hover:underline ml-4">Contact Us</div>
 
             </div>
         </div>

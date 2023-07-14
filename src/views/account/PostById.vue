@@ -5,8 +5,12 @@
         <div class="mx-auto">
             <div class="my-4">
                 <div class="flex items-center py-2">
-                    <img :src="userStore.userImage(post.user.image)" class="rounded-full" width="50">
-                    <div class="ml-2 font-bold text-2xl text-gray-300">{{ post.user.first_name }} {{ post.user.last_name }}</div>
+                    <router-link :to="'/account/profile/' + post.user.id">
+                        <img :src="post.user.image ? userStore.userImage(post.user.image) : defaultProfile" class="rounded-full" width="50">
+                    </router-link>
+                    <router-link :to="'/account/profile/' + post.user.id">
+                        <div class="ml-2 font-bold text-2xl text-gray-300">{{ post.user.first_name }} {{ post.user.last_name }}</div>
+                    </router-link>
                 </div>
                 <img class="w-full" :src="postStore.postImage(post.image)" alt="">
                 <div class="p-4">
@@ -32,6 +36,8 @@
     const postStore = usePostStore();
     const route = useRoute();
     let post = ref(null);
+    const defaultProfile = process.env.VUE_APP_URL + 'DefaultUserAvatar.webp';
+
 
     onMounted(async () => {
         await getPostById();

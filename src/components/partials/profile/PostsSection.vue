@@ -18,9 +18,9 @@
             <div v-for="post in postStore.posts" :key="post" class="my-1 px-1 w-full md:w-1/2 lg:w-1/2">
                 
                 <div class="max-w-sm border  border-gray-700 rounded-lg my-2">
-                    <a href="#">
-                        <img class="rounded-t-lg" :src="postStore.postImage(post.image)" alt="" />
-                    </a>
+                    <router-link :to="'/account/post-by-id/' + post.id">
+                        <img class="rounded-t-lg w-full" :src="postStore.postImage(post.image)" alt="" />
+                    </router-link>
                     <div class="p-2 md:p-4">
                         <div class="text-lg">
                             <router-link
@@ -42,6 +42,7 @@
                             <router-link
                                 :to="'/account/edit-post/' + post.id" 
                                 class="
+                                    mr-1
                                     bg-blue-500
                                     hover:bg-blue-700
                                     text-white
