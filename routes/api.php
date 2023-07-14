@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\PostController;
+use App\Http\Controllers\API\PostsByUserController;
 use App\Http\Controllers\API\SongController;
 use App\Http\Controllers\API\SongsByUserController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\YoutubeController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +25,6 @@ Route::post('login',[AuthController::class,'login']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('logout',[AuthController::class,'logout']);
 
     Route::get('users/{id}',[UserController::class,'show']);
     Route::put('users/{id}',[UserController::class,'update']);
@@ -41,21 +40,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('youtube/{id}',[YoutubeController::class,
     'destroy']);
 
-    Route::get('posts',[PostController::class,'index']);
-    Route::get('posts/{$id}',[PostController::class,'show']);
-    Route::post('posts',[PostController::class,'store']);
-    Route::get('posts/{$id}',[PostController::class,'update']);
-    Route::get('posts/{$id}',[PostController::class,'destroy']);
+    Route::get('posts', [PostController::class, 'index']);
+    Route::get('posts/{id}', [PostController::class, 'show']);
+    Route::post('posts', [PostController::class, 'store']);
+    Route::put('posts/{id}', [PostController::class, 'update']);
+    Route::delete('posts/{id}', [PostController::class, 'destroy']);
+
+    Route::get('user/{user_id}/posts',[PostsByUserController::class,'show']);
+
+    Route::post('logout',[AuthController::class,'logout']);
 
 
 
-
-
-
-
-
-    Route::get('inside-mware',function() {
-        return response()->json('Success',200);
-    });
 });
 
