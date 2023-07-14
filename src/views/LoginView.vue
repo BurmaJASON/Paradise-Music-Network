@@ -1,10 +1,10 @@
 <template>
-    <div id="Register">
+    <div id="Login">
         <TopNavigation />
         <div class="w-full p-6 flex justify-center items-center">
             <div class="w-full max-w-xs">
-                <div class="bg-black p-8 shadow rounded mb-6">
-                    <h1 class="mb-6 text-lg text-gray-100 font-thin">Let's get rocking!</h1>
+                <div class="bg-white p-8 shadow rounded mb-6">
+                    <h1 class="mb-6 text-lg text-black font-thin">Let's get rocking!</h1>
 
                     <div class="mb-4">
                         <TextInput 
@@ -47,7 +47,7 @@
 
                 </div>
 
-                <p class="text-center text-md text-gray-900">
+                <p class="text-center text-md text-gray-300">
                     Don't have an account yet?
                     <router-link to="register" class="text-blue-500 no-underline hover:underline">
                         Register

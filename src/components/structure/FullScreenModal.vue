@@ -36,21 +36,52 @@
             <div class="bg-black absolute w-full h-full opacity-75"></div>
             <div class="my-auto fixed border-white w-80 pt-16">
                 <p class="text-2xl text-center text-white font-bold">Menu</p>
+
                     <RouterLinkButton
+                        v-if="!userStore.id"
                         @click="open = !open"
                         class="w-full text-gray-100 text-center text-lg"
+                        btnText="Login"
+                        color="green"
+                        url="login"
+                    />
+
+                    <RouterLinkButton
+                        v-if="!userStore.id"
+                        @click="open = !open"
+                        class="w-full text-gray-100 text-center text-lg mt-4"
+                        btnText="Register"
+                        color="green"
+                        url="register"
+                    />
+
+                    <RouterLinkButton
+                        v-if="userStore.id"
+                        @click="open = !open"
+                        class="w-full text-gray-100 text-center text-lg mt-4"
                         btnText="Profile"
                         color="green"
                         :url="'/account/profile/'+ userStore.id "
                     />
 
                     <RouterLinkButton
+                        v-if="userStore.id"
                         @click="open = !open"
                         class="w-full text-gray-100 text-center text-lg mt-4"
                         btnText="Posts"
                         color="green"
                         url="/account/posts"
                     />
+
+                    <RouterLinkButton
+                        v-if="userStore.id"
+                        @click="logout"
+                        class="w-full text-gray-100 text-center text-lg mt-4"
+                        btnText="LogOut"
+                        color="green"
+                    />
+
+                    
                 
                     <RouterLinkButton
                         @click="open = !open"
@@ -68,8 +99,39 @@
     import RouterLinkButton from '../global/RouterLinkButton.vue'
 
     import { useUserStore } from '@/store/user-store'
+    import axios from "axios";
+    import { useProfilestore } from '@/store/profile-store'
+    import { useSongStore } from '@/store/song-store'
+    import { usePostStore } from '@/store/post-store'
+    import { useVideoStore } from '@/store/video-store'
+    import { useRouter } from 'vue-router';
 
 
-    const userStore = useUserStore();
+    const userStore = useUserStore()
+    const profileStore = useProfilestore()
+    const songStore = useSongStore()
+    const postStore = usePostStore()
+    const videoStore = useVideoStore()
+    const router = useRouter();
+
     let open = ref(false)
+
+    const logout = async () => {
+        try{
+            let res = await axios.post('api/logout', {
+                user_id : userStore.id
+            })
+            console.log(res.data);
+            userStore.clearUser();
+            profileStore.clearProfile();
+            songStore.clearSongs();
+            postStore.clearPosts();
+            videoStore.clearVideos();
+
+            router.push('/');
+
+        }catch(err) {
+            console.log(err);
+        }
+    }
 </script>

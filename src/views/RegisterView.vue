@@ -1,5 +1,6 @@
 <template>
   <div id="Register">
+     <TopNavigation />
     <div class="w-full p-6 flex justify-center items-center">
        <div class="w-full max-w-xs">
            <div class="bg-white p-8 shadow rounded mb-6">
@@ -96,6 +97,7 @@
     import { useVideoStore } from '../store/video-store'
     import { useRouter } from 'vue-router';
     import TextInput from "../components/global/TextInput.vue"
+    import TopNavigation from '@/components/structure/TopNavigation.vue';
 
     const router = useRouter()
     const userStore = useUserStore()
